@@ -11,13 +11,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Qt6Network)
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Sql)
+find_package(QT NAMES Qt5 Qt6 REQUERED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Network Sql)
 add_executable(ConsolApp
   main.cpp
 )
-
-target_link_libraries(ConsolApp PRIVATE Qt6::Network)
+target_link_libraries(ConsolApp PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(ConsolApp PRIVATE Qt${QT_VERSION_MAJOR}::Network)
 target_link_libraries(ConsolApp PRIVATE Qt${QT_VERSION_MAJOR}::Sql)
 include(GNUInstallDirs)
 
